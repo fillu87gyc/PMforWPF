@@ -1,12 +1,458 @@
-﻿<Window x:Class="PokemonManagerWPF.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PokemonManagerWPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+﻿<Window
+	x:Class="PokemonManagerWPF.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:conv="clr-namespace:Convertar"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Base"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Title="ポケモン管理ツール"
+	Width="448.115"
+	Height="380"
+	Icon="images/myfile/CN47itwUYAEMrGX.png"
+	mc:Ignorable="d">
+	<Grid Margin="0,0,0.444,0.889">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="20" />
+			<RowDefinition Height="235*" />
+		</Grid.RowDefinitions>
+		<Menu Grid.ColumnSpan="2" Margin="0,0,0,0">
+			<MenuItem Header="ファイル(_F)">
+				<MenuItem Header="新規作成" InputGestureText="Ctrl+N" />
+				<MenuItem Header="上書き保存" InputGestureText="Ctrl+S" />
+				<MenuItem Header="インポート" />
+				<MenuItem Header="エクスポート" />
+				<Separator />
+				<MenuItem Header="終了" InputGestureText="ALT+F4" />
+			</MenuItem>
+			<MenuItem Header="編集(_E)">
+				<MenuItem Header="検索" />
+				<MenuItem Header="データの編集" />
+				<MenuItem Header="削除" />
+			</MenuItem>
+			<MenuItem Header="ヘルプ(_H)" />
+		</Menu>
+		<Border
+			x:Name="border_Image"
+			Grid.Row="1"
+			Width="120"
+			Height="120"
+			Margin="10,10,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			BorderBrush="Silver"
+			BorderThickness="5">
+			<Image
+				x:Name="Image_Icon"
+				Grid.Row="1"
+				Margin="0"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Top"
+				Source="{Binding ImgSource}" />
+		</Border>
+		<Grid
+			Grid.Row="1"
+			Width="60"
+			Height="12"
+			Margin="140,10,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top">
+			<Grid.Resources>
+				<conv:PathConverter x:Key="PathConv" />
+			</Grid.Resources>
+			<Image
+				Width="26"
+				HorizontalAlignment="Left"
+				RenderTransformOrigin="0.5,0.5"
+				Source="{Binding ImgType1, Converter={StaticResource PathConv}}" />
+			<Image
+				Width="26"
+				HorizontalAlignment="Right"
+				RenderTransformOrigin="0.5,0.5"
+				Source="{Binding ImgType2, Converter={StaticResource PathConv}}" />
+		</Grid>
+		<TextBlock
+			x:Name="textBlock_Name"
+			Grid.Row="1"
+			Margin="140,32,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			FontFamily="游ゴシック"
+			FontSize="18"
+			FontWeight="Bold"
+			Text="{Binding Name}"
+			TextWrapping="Wrap" />
+		<GroupBox
+			x:Name="GroupBox_Waza"
+			Grid.Row="1"
+			Width="160"
+			Height="166"
+			Margin="168,157,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			FontWeight="Bold"
+			Header="ワザ">
+			<ListBox>
+				<ListBox.ItemContainerStyle>
+					<Style TargetType="{x:Type ListBoxItem}">
+						<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+					</Style>
+				</ListBox.ItemContainerStyle>
+				<Button Height="30" Content="a" />
+				<Button Height="30" Content="a" />
+				<Button Height="30" Content="a" />
+				<Button Height="30" Content="a" />
+			</ListBox>
+		</GroupBox>
+		<GroupBox
+			Grid.Row="1"
+			Width="91"
+			Height="131"
+			Margin="333,160,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Header="実数値">
+			<Grid Margin="0,0,0.667,0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="1*" />
+					<RowDefinition Height="1*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="7*" />
+					<ColumnDefinition Width="6*" />
+				</Grid.ColumnDefinitions>
+				<TextBlock
+					Grid.RowSpan="2"
+					Grid.ColumnSpan="2"
+					Width="42"
+					Height="18"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Text="HP"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="1"
+					Grid.ColumnSpan="2"
+					Margin="0,0.222,35.778,0"
+					Text="攻撃"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="2"
+					Grid.RowSpan="2"
+					Grid.ColumnSpan="2"
+					Width="42"
+					Height="18"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Text="防御"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="3"
+					Grid.ColumnSpan="2"
+					Margin="0,0.222,35.778,0"
+					Text="特攻"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="4"
+					Grid.RowSpan="2"
+					Grid.ColumnSpan="2"
+					Width="42"
+					Height="18"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Text="特防"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="5"
+					Grid.ColumnSpan="2"
+					Width="42"
+					Margin="0,0.222,0,0"
+					HorizontalAlignment="Left"
+					Text="素早さ"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Column="1"
+					Height="18"
+					Margin="0.222,0,-0.222,0"
+					VerticalAlignment="Top"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="1"
+					Grid.Column="1"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="3"
+					Grid.Column="1"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="2"
+					Grid.Column="1"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="4"
+					Grid.Column="1"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="5"
+					Grid.Column="1"
+					Text="TextBlock"
+					TextWrapping="Wrap" />
+
+			</Grid>
+		</GroupBox>
+
+		<CheckBox
+			x:Name="checkBox"
+			Grid.Row="1"
+			Margin="10,135,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Content="アイテム補正" />
+		<CheckBox
+			Grid.Row="1"
+			Margin="10,155,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Click="CheckBox_Click"
+			Content="特性補正" />
+		<GroupBox
+			Grid.Row="1"
+			Height="89"
+			Margin="135,66,4.334,0"
+			VerticalAlignment="Top"
+			Header="ステータス">
+			<Grid Margin="0,0,0.286,0.286">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="44*" />
+					<ColumnDefinition Width="269*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="30*" />
+					<RowDefinition Height="5*" />
+					<RowDefinition Height="30*" />
+				</Grid.RowDefinitions>
+
+				<Grid.Resources>
+					<conv:EffAndIndConverter x:Key="FormatConv" />
+				</Grid.Resources>
+				<TextBlock
+					x:Name="textBlock_EffortValue"
+					Grid.Row="0"
+					Grid.Column="1"
+					Margin="0,10,0.333,5.222"
+					Text="{Binding StatusMgr.EffortValue, Converter={StaticResource FormatConv}}" />
+				<TextBlock
+					x:Name="textBlock_"
+					Grid.Row="2"
+					Grid.Column="1"
+					Margin="1,4.889,0.333,0.333"
+					Text="{Binding StatusMgr.IndividualValue, Converter={StaticResource FormatConv}}" />
+				<TextBlock
+					Grid.RowSpan="2"
+					Grid.ColumnSpan="2"
+					Margin="0,22,2.333,0.111"
+					FontSize="14"
+					Text="------------------------------------------------------------------------------------------------------------" />
+				<TextBlock
+					x:Name="textBlock19"
+					Margin="0,10,1,0.222"
+					TextWrapping="Wrap"><Run Text="努力" /><Run Text="値" /><Run Text=":" /></TextBlock>
+				<TextBlock
+					x:Name="textBlock20"
+					Grid.Row="2"
+					Width="43"
+					Margin="0,4.889,0,0.333"
+					HorizontalAlignment="Left"
+					TextWrapping="Wrap"><Run Text="個体値" /><Run Text=":" /></TextBlock>
+			</Grid>
+		</GroupBox>
+		<ComboBox
+			x:Name="comboBox"
+			Grid.Row="1"
+			Width="120"
+			Margin="295,47,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			SelectedIndex="0">
+			<Button Content="アイテム" />
+		</ComboBox>
+
+		<GroupBox
+			x:Name="groupBox2"
+			Grid.Row="1"
+			Width="153"
+			Height="142"
+			Margin="10,175,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Header="ランク設定">
+			<Grid
+				Height="122"
+				Margin="0,0,-0.444,-4"
+				VerticalAlignment="Bottom">
+
+				<Grid.RowDefinitions>
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="120.889" />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+
+				<Slider
+					x:Name="sliderH"
+					Width="120"
+					Height="20"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<Slider
+					x:Name="sliderA"
+					Grid.Row="1"
+					Width="120"
+					Height="20"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<Slider
+					x:Name="sliderB"
+					Grid.Row="3"
+					Grid.RowSpan="2"
+					Width="120"
+					Height="20"
+					Margin="0,20,0,0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<Slider
+					x:Name="sliderC"
+					Grid.Row="3"
+					Width="120"
+					Height="20"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<Slider
+					x:Name="sliderD"
+					Grid.Row="2"
+					Width="120"
+					Height="20"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<Slider
+					x:Name="sliderS"
+					Grid.Row="4"
+					Grid.RowSpan="2"
+					Width="120"
+					Height="20"
+					Margin="0,17.778,0,0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					IsSnapToTickEnabled="True"
+					Maximum="6"
+					Minimum="-6"
+					TickFrequency="1" />
+				<TextBlock
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderH, Path=Value, StringFormat={}H{0:0}}"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="1"
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderA, Path=Value, StringFormat={}A{0:0}}"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="2"
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderB, Path=Value, StringFormat={}B{0:0}}"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="3"
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderC, Path=Value, StringFormat={}C{0:0}}"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="4"
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderD, Path=Value, StringFormat={}D{0:0}}"
+					TextWrapping="Wrap" />
+				<TextBlock
+					Grid.Row="5"
+					Grid.Column="1"
+					Text="{Binding ElementName=sliderS, Path=Value, StringFormat={}S{0:0}}"
+					TextWrapping="Wrap" />
+			</Grid>
+		</GroupBox>
+		<Image
+			x:Name="image"
+			Grid.Row="1"
+			Width="27"
+			Height="27"
+			Margin="397,295,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Source="images/myfile/icon_000560_256.png" />
+		<Image
+			x:Name="image_Copy"
+			Grid.Row="1"
+			Width="27"
+			Height="27"
+			Margin="365,295,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Source="images/myfile/icon_000090_256.png" />
+		<Image
+			x:Name="image_Copy1"
+			Grid.Row="1"
+			Width="27"
+			Height="27"
+			Margin="333,296,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Source="images/myfile/icon_002410_256.png" />
+		<TextBlock
+			Grid.Row="1"
+			Margin="340,5,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Text="{Binding Ability}"
+			TextWrapping="Wrap" />
+		<TextBlock
+			Grid.Row="1"
+			Margin="340,26,0,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			Text="{Binding Tokusei}"
+			TextWrapping="Wrap" />
+	</Grid>
 </Window>
