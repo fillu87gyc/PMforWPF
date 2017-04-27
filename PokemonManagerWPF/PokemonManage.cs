@@ -24,15 +24,15 @@ namespace PokemonManage
 
 						Show.ImgType1 = xlbook.Worksheet(1).Cell(row, 10).Value.ToString();
 						Show.ImgType2 = xlbook.Worksheet(1).Cell(row, 11).Value.ToString();
-
-						Abilitys[0] = new Ability.Ability(xlbook.Worksheet(1).Cell(row, 12).Value.ToString());
-						Abilitys[1] = new Ability.Ability(xlbook.Worksheet(1).Cell(row, 13).Value.ToString());
-						Abilitys[2] = new Ability.Ability(xlbook.Worksheet(1).Cell(row, 14).Value.ToString());
+						for (int i = 0; i < 3; i++)
+						{
+								Abilitys[i] = new Ability.Ability(xlbook.Worksheet(1).Cell(row, 12+i).Value.ToString());
+						}
 				}
+
 				StatusManager.Status St;
 				int[] BaseSt = new int[6];
-				Ability.Ability[] Abilitys = new Ability.Ability[3]; 
+				Ability.Ability[] Abilitys = new Ability.Ability[3];
 				Base.Property Show = new Base.Property();
 		}
 }
-

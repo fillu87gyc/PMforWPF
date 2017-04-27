@@ -64,7 +64,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Ability.cs" />
+    <Compile Include="InputForm.xaml.cs">
+      <DependentUpon>InputForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemSelecter.xaml.cs">
+      <DependentUpon>ItemSelecter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatusManager.cs" />
+    <Page Include="InputForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemSelecter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
