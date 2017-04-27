@@ -92,5 +92,9 @@ namespace Base
 				protected string ability = "";
 				protected string tokusei = "";
 		}
-
+		public class Preparation
+		{
+				public static string DATABASE = "DataBases/";
+				public static int MEMBER = 861;
+		}
 }
