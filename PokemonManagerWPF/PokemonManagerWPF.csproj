@@ -67,6 +67,7 @@
     <Compile Include="InputForm.xaml.cs">
       <DependentUpon>InputForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemManager.cs" />
     <Compile Include="ItemSelecter.xaml.cs">
       <DependentUpon>ItemSelecter.xaml</DependentUpon>
     </Compile>

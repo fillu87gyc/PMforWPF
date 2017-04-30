@@ -94,7 +94,17 @@ namespace Base
 		}
 		public class Preparation
 		{
+				/// <summary>
+				/// DataBases/
+				/// </summary>
 				public static string DATABASE = "DataBases/";
+				/// <summary>
+				/// 861
+				/// </summary>
 				public static int MEMBER = 861;
+				/// <summary>
+				/// 405
+				/// </summary>
+				public static int ITEM = 405;
 		}
 }
