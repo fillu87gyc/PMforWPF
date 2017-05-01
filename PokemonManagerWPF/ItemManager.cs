@@ -39,6 +39,9 @@ namespace Item
 						Others_no = from data in items
 									where data.Tags == "その他"
 									select data.Name;
+						MegaStones = from data in items
+						where data.Tags == "メガストーン"
+						select data.Name;
 				}
 				public string[] Names;
 				public IEnumerable<string> Plates;
@@ -48,6 +51,7 @@ namespace Item
 				public IEnumerable<string> Designated;
 				public IEnumerable<string> Others_use;
 				public IEnumerable<string> Others_no;
+				public IEnumerable<string> MegaStones;
 				Item[] items = new Item[Base.Preparation.ITEM];
 		}
 		class Item
